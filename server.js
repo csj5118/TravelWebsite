@@ -1,29 +1,27 @@
 const express = require('express');
 const app = express();
-
-const { User } = require('./db/models'); 
-
 const PORT = process.env.PORT || 3001;
-const { getUsers, addUser } = require('./controllers/users');
-const pool = require('./db/db');
-require('dotenv').config();
+
+const { User } = require('./db/models');
+const sequelize = require('./db/db');
+
 const exphbs = require('express-handlebars');
 const path = require('path');
-const sequelize = require('./config/connection');
-
-const routes = require ("./controllers");
-const { url } = require('inspector');
-
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-const hbs = exphbs.create();
 
+const hbs = exphbs.create({ defaultLayout: 'main' });
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Define a route for the root URL to render homepage.handlebars
+app.get('/', (req, res) => {
+  res.render('homepage');
+});
 
 app.get('/users', async (req, res) => {
   try {
@@ -51,7 +49,6 @@ app.post('/register', async (req, res) => {
   }
 });
 
-
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({ error: 'Something went wrong!' });
@@ -67,5 +64,5 @@ async function syncDatabase() {
 }
 
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log('Server is running on http://localhost:' + PORT));
+  app.listen(PORT, () => console.log(`Server is running on http://localhost:${PORT}`));
 });
