@@ -1,12 +1,19 @@
 const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 3001; 
 
-const { User } = require('./db/models');
-const sequelize = require('./db/db'); 
+const { User } = require('./db/models'); 
+
+const PORT = process.env.PORT || 3001;
+const { getUsers, addUser } = require('./controllers/users');
+const pool = require('./db/db');
+require('dotenv').config();
 const exphbs = require('express-handlebars');
 const path = require('path');
-const routes = require('./controllers');
+const sequelize = require('./config/connection');
+
+const routes = require ("./controllers");
+const { url } = require('inspector');
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
