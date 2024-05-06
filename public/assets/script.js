@@ -39,17 +39,17 @@ function getLatest(options) {
         console.log(rates)
         console.log(rates.rates)
         console.log(rates.rates.EUR)
-            EURUSD.innerText=`${"Europe:  EUR/USD " + rates.rates.EUR}`;
+            EURUSD.innerText=`${"Germany:  EUR/USD " + rates.rates.EUR}`;
             GBPUSD.innerText=`${"London:  GBP/USD " + rates.rates.GBP}`;
-            USDCAD.innerText=`${"USD/CAD " + rates.rates.CAD}`;
+            USDCAD.innerText=`${"Canada:  USD/CAD " + rates.rates.CAD}`;
+            USDBRL.innerText=`${"Brazil:  USD/BRL " + rates.rates.BRL}`;
+            USDMXN.innerText=`${"Mexico:  USD/MXN " + rates.rates.MXN}`;
+            USDJPY.innerText=`${"Japan:  USD/JPY " + rates.rates.JPY}`;
             USDCHF.innerText=`${"USD/CHF " + rates.rates.CHF}`;
             USDNOK.innerText=`${"USD/NOK " + rates.rates.NOK}`;
             USDSEK.innerText=`${"USD/SEK " + rates.rates.SEK}`;
-            USDJPY.innerText=`${"USD/JPY " + rates.rates.JPY}`;
             AUDUSD.innerText=`${"AUD/USD " + rates.rates.AUD}`;
             NZDUSD.innerText=`${"NZD/USD " + rates.rates.NZD}`;
-            USDBRL.innerText=`${"USD/BRL " + rates.rates.BRL}`;
-            USDMXN.innerText=`${"USD/MXN " + rates.rates.MXN}`;
             USDPHP.innerText=`${"USD/PHP " + rates.rates.PHP}`;
             USDARS.innerText=`${"USD/ARS " + rates.rates.ARS}`;
             USDPEN.innerText=`${"USD/PEN " + rates.rates.PEN}`;
